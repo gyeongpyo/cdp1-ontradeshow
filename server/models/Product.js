@@ -6,9 +6,13 @@ const productSchema = mongoose.Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	},
-	ex_name : {
+	title : {
 		type: String,
 		maxlength: 50
+	},
+	category: {
+		type: Number,
+		default: 1
 	},
 	simple_description: {
 		type: String,
@@ -19,7 +23,7 @@ const productSchema = mongoose.Schema({
 	},
 	num_of_participants: {
 		type: Number,
-		default: 0
+		default: 1
 	},
 	full_description: {
 		type: String,

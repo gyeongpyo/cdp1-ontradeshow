@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Typography, Button, Form, message, Input, Icon } from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import Calendar from 'react-calendar';
+import Axios from 'axios';
 
 const{Title} = Typography;
 const{TextArea} = Input;
@@ -70,7 +71,7 @@ const FTime = [
   {key: 24, value: "   23:00 "}
 ]
 
-const Exhibition = [
+const Exhibitions = [
 	{key: 1, value: "Business"},
 	{key: 2, value: "IT development"},
 	{key: 3, value: "Automobile" },
@@ -78,7 +79,7 @@ const Exhibition = [
 ]
 
 
-function UploadEventPage() {
+function UploadEventPage(props) {
 
   const [Images, setImages]=useState([])                                //전시회 이미지
 
@@ -150,7 +151,35 @@ function UploadEventPage() {
   const submitHandler = (event) => {
     event.preventDefault();
 
- 
+	// online, offline radio button 값이 안 넘어 와서 일단 제외
+    if (!Images || !TitleValue || !SDescriptionValue || !PriceValue ||
+       !FDescriptionValue || !AddressValue || !QuantityValue || !ExhibitionValue) {
+		//console.log( Images, TitleValue, SDescriptionValue, PriceValue, FDescriptionValue, AddressValue, QuantityValue, value, ExhibitionValue);
+         return alert("Fill in all blanks!")
+    }
+	
+	const body = {
+		writer: props.user.userData._id,
+		title: TitleValue,
+		category: ExhibitionValue,
+		simple_description: SDescriptionValue,
+		price: PriceValue,
+		num_of_participants: QuantityValue,
+		full_description: FDescriptionValue,
+		images: Images,
+		is_online: value,
+		address: AddressValue
+	};
+
+	Axios.post("/api/product", body)
+		.then(response => {
+			if (response.data.success) {
+				alert('Success to upload the event');
+				props.history.push('/');
+			} else {
+				alert('Fail to upload the event')
+			}
+		})
   }
 
   return (
@@ -180,8 +209,8 @@ function UploadEventPage() {
       <div>
         <label style={{ fontWeight: 'bold' }}>Category :&nbsp; </label>
         
-        <select onChange={onExhibitionSelectChange}>
-          {Exhibition.map(item =>(
+        <select onChange={onExhibitionSelectChange} value={ExhibitionValue}>
+          {Exhibitions.map(item =>(
            <option key={item.key} value={item.value}>{item.value}</option>
           ))}  
         </select>
@@ -278,7 +307,7 @@ function UploadEventPage() {
 
       </div>
 
-    <Button type="submit"> 
+    <Button type="submit" onClick={submitHandler}> 
       Submit
     </Button>
     

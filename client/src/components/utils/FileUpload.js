@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
 import {createRef} from 'react'
 import Dropzone from 'react-dropzone'
-import { Upload, message, Button, Modal } from 'antd';
+import { Button } from 'antd';
 import { UploadOutlined,  } from '@ant-design/icons';
 import axios from 'axios';
 

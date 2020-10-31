@@ -2,9 +2,9 @@ import React, { useEffect }from 'react'
 import { FaCode } from "react-icons/fa";
 import axios from 'axios';
 
-function LandingPage() {
+function SearchPage() {
     useEffect(() => {
-        axios.post('api/product/products')
+        axios.post('/api/product/products')
             .then(response => {
                 if (response.data.success) {
                     console.log(response.data);
@@ -12,10 +12,10 @@ function LandingPage() {
                     alert('fail to load events');
                 }
             })
-    }, [])
+    }, []);
     return (
-      <div> landing </div>  
+      <div> Searching </div>  
     );
 }
 
-export default LandingPage
+export default SearchPage
