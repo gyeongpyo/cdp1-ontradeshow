@@ -1,8 +1,19 @@
 import React, { useEffect }from 'react'
 import { FaCode } from "react-icons/fa";
 import axios from 'axios';
+import ImageSlider from '../../utils/ImageSlider';
+import { Carousel } from 'antd';
+import { banner_1 } from './banner/banner_1.png';
 
 function LandingPage() {
+    const contentStyle = {
+        height: '400px',
+        color: '#fff',
+        lineHeight: '160px',
+        textAlign: 'center',
+        background: '#364d79',
+      };
+
     useEffect(() => {
         axios.post('api/product/products')
             .then(response => {
@@ -14,7 +25,23 @@ function LandingPage() {
             })
     }, [])
     return (
-      <div> landing </div>  
+      <div>
+          <Carousel autoplay>
+            <div>
+            <h3 style={contentStyle}>1</h3>
+            {/* <img style={{width: '100%', height: '400px'}} src={banner_1}/> */}
+            </div>
+            <div>
+            <h3 style={contentStyle}>2</h3>
+            </div>
+            <div>
+            <h3 style={contentStyle}>3</h3>
+            </div>
+            <div>
+            <h3 style={contentStyle}>4</h3>
+            </div>
+        </Carousel>
+      </div>  
     );
 }
 
