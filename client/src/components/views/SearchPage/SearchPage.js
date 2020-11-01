@@ -12,7 +12,10 @@ function SearchPage() {
 	const [Skip, setSkip] = useState(0);
 	const [Limit, setLimit] = useState(8);
 	const [PostSize, setPostSize] = useState();
-
+	const [Filters, setFilters] = useState({
+		category: [],
+		price: []
+	});
     useEffect(() => {
 		let body = {
 			skip: Skip,
@@ -64,13 +67,31 @@ function SearchPage() {
 			</Col>
 	})
 
+	const showFilteredResults = (filters) => {
+		let body = {
+			skip: 0,
+			limit: Limit,
+			filters: filters
+		}
+
+		getEvents(body);
+		setSkip(0);
+	}
+
+	const handleFilters = (filters, category) => {
+		const newFilters = {...Filters};
+		newFilters[category] = filters;
+
+		showFilteredResults(newFilters);
+	}
+
     return (
 		<div style={{ width: '75%', margin: '3rem auto' }}>
 			<div style={{ textAlign: 'center' }}>
 				<h2> Event List </h2>
 			</div>
 
-			<Checkbox list={categories}></Checkbox>
+			<Checkbox list={categories} handleFilters={(filters) => handleFilters(filters, "category")}></Checkbox>
 
 
 			<Row gutter={[16, 16]}>
