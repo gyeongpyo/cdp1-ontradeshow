@@ -169,7 +169,9 @@ function UploadEventPage(props) {
 		images: Images,
 		is_online: value,
 		address: AddressValue
-	};
+  };
+  
+  console.log(body);
 
 	Axios.post("/api/product", body)
 		.then(response => {
@@ -177,9 +179,10 @@ function UploadEventPage(props) {
 				alert('Success to upload the event');
 				props.history.push('/');
 			} else {
-				alert('Fail to upload the event')
+        alert('Fail to upload the event')
+        console.log(response);
 			}
-		})
+		});
   }
 
   return (
@@ -192,9 +195,9 @@ function UploadEventPage(props) {
          {/*DropZone*/}
 
       
-        <div style={{textAlign:'center'}}>
+        {/*}div style={{textAlign:'center'}}>
          <label>Image Upload  (.jpeg .png)</label>  
-        </div>
+  </div>*/}
       <br/>
       <br/>
     
@@ -211,7 +214,7 @@ function UploadEventPage(props) {
         
         <select onChange={onExhibitionSelectChange} value={ExhibitionValue}>
           {Exhibitions.map(item =>(
-           <option key={item.key} value={item.value}>{item.value}</option>
+           <option key={item.key} value={item.key}>{item.value}</option>
           ))}  
         </select>
       </div>
@@ -241,7 +244,7 @@ function UploadEventPage(props) {
       <label style={{ fontWeight: 'bold' }}>Total Number of Expected Participants : {" "}
         <select onChange={onQuantitySelectChange} value={QuantityValue}>
           {Quantities.map(item =>(
-           <option key={item.key} value={item.value}>{item.value}</option>
+           <option key={item.key} value={item.key}>{item.value}</option>
           ))}  
         </select>
       </label>
