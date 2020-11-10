@@ -5,6 +5,7 @@ import { Icon, Col, Card, Row, Button } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import Checkbox from './Sections/CheckBox';
 import RadioBox from './Sections/RadioBox';
+import SearchFeature from './Sections/SearchFeature'
 import { price, categories } from './Sections/Datas';
 
 
@@ -19,6 +20,9 @@ function SearchPage() {
 		category: [],
 		price: []
 	});
+	const [SearchTerm, setSearchTerm] = useState("")
+
+
     useEffect(() => {
 		let body = {
 			skip: Skip,
@@ -105,12 +109,26 @@ function SearchPage() {
 		setFilters(newFilters);
 	}
 
+	const updateSearchTerm = (newSearchTerm) => {
+		let body = {
+			skip: 0,
+			limit: Limit,
+			filters: Filters,
+			searchTerm: newSearchTerm
+		}
+
+		setSkip(0)
+		setSearchTerm(newSearchTerm)
+		getEvents(body)
+	}
+
     return (
 		<div style={{ width: '75%', margin: '3rem auto' }}>
 			<div style={{ textAlign: 'center' }}>
 				<h2> Event List </h2>
 			</div>
 
+		{/* Filter */}
 		<Row gutter={[16, 16]}>
 			<Col lg={12} xs={24}>
 				<Checkbox list={categories} handleFilters={(filters) => handleFilters(filters, "category")}></Checkbox>
@@ -120,6 +138,13 @@ function SearchPage() {
 			</Col>
 		</Row>
 
+		{/* Search */}
+		<div style={{ display:'flex', justifyContent: 'flex-end', margin: '1rem auto'}}>
+			<SearchFeature refreshFunction={updateSearchTerm}/>
+		</div>
+		
+
+		{/* Card */}
 			<Row gutter={[16, 16]}>
 				{renderCards}
 			</Row>
