@@ -4,7 +4,10 @@ import axios from 'axios';
 import { Icon, Col, Card, Row, Button } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import Checkbox from './Sections/CheckBox';
-import { categories } from './Sections/Datas';
+import RadioBox from './Sections/RadioBox';
+import { price, categories } from './Sections/Datas';
+
+
 
 function SearchPage() {
 
@@ -78,11 +81,28 @@ function SearchPage() {
 		setSkip(0);
 	}
 
+	const handlePrice = (value) => {
+		const data = price;
+		let array = [];
+
+		for (let key in data) {
+			if (data[key]._id === parseInt(value, 10)) {
+				array = data[key].array;
+			}
+		}
+		return array
+	}
+
 	const handleFilters = (filters, category) => {
 		const newFilters = {...Filters};
 		newFilters[category] = filters;
 
+		if (category === "price") {
+			let priceValues = handlePrice(filters)
+			newFilters[category] = priceValues;
+		}
 		showFilteredResults(newFilters);
+		setFilters(newFilters);
 	}
 
     return (
@@ -91,8 +111,14 @@ function SearchPage() {
 				<h2> Event List </h2>
 			</div>
 
-			<Checkbox list={categories} handleFilters={(filters) => handleFilters(filters, "category")}></Checkbox>
-
+		<Row gutter={[16, 16]}>
+			<Col lg={12} xs={24}>
+				<Checkbox list={categories} handleFilters={(filters) => handleFilters(filters, "category")}></Checkbox>
+			</Col>
+			<Col lg={12} xs={24}>
+				<RadioBox list={price} handleFilters={(filters) => handleFilters(filters, "price")}></RadioBox>
+			</Col>
+		</Row>
 
 			<Row gutter={[16, 16]}>
 				{renderCards}
