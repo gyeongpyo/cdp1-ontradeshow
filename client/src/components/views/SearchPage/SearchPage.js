@@ -64,7 +64,9 @@ function SearchPage() {
 		console.log('Event', event);
 		return <Col lg={6} md={8} xs={24} key={index}>
 				<Card
-					cover={<img style={{width: '100%', height: '200px', maxHeight: '200px'}} src={`http://localhost:5000/${event.images[0]}`} />}
+					cover={<a href={`/event/${event._id}`}>
+						<img style={{width: '100%', height: '200px', maxHeight: '200px'}} src={`http://localhost:5000/${event.images[0]}`}/>
+						</a>}
 					>
 					<Meta 
 						title={event.title}
