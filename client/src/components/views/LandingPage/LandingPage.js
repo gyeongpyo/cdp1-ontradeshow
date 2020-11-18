@@ -1,9 +1,10 @@
 import React, { useEffect }from 'react'
-import { FaCode } from "react-icons/fa";
+import { FaCode, FaSortAmountDown } from "react-icons/fa";
 import axios from 'axios';
 import ImageSlider from '../../utils/ImageSlider';
 import { Carousel } from 'antd';
 import { banner_1 } from './banner/banner_1.png';
+import {Button}from 'antd';
 
 function LandingPage() {
     const contentStyle = {
@@ -12,6 +13,11 @@ function LandingPage() {
         lineHeight: '160px',
         textAlign: 'center',
         background: '#364d79',
+      };
+
+
+      const buttonSt = {
+          width : '55px'
       };
 
     useEffect(() => {
@@ -40,9 +46,21 @@ function LandingPage() {
             <div>
             <h3 style={contentStyle}>4</h3>
             </div>
+        <div>
+ 
+         </div>
+        
+
         </Carousel>
+        <div>
+        <Button type="primary" style = {buttonSt}>music</Button>  <Button type="primary" style = {buttonSt}>science</Button>    <Button type="primary" style = {buttonSt}>computer</Button>    <Button type="primary" style = {buttonSt}>menu1</Button>     <Button type="primary" style = {buttonSt}>menu2</Button>
+        </div>
+        
       </div>  
+
     );
+    
 }
+
 
 export default LandingPage
