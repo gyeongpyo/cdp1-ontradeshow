@@ -1,9 +1,22 @@
 import React from 'react'
-
+import { Button } from 'antd'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../../_actions/user_actions';
 function ProductInfo(props) {
+	const dispatch = useDispatch();
+
+	const clickHandler = () => {
+		/* redux를 사용 */
+		dispatch(addToCart(props.detail._id));
+	}
 	return (
 		<div>
 			ProductInfo
+			<div style={{ display: 'flex', justifyContent:'center' }}>
+				<Button size="large" shape="round" type="danger" onClick={clickHandler}>
+					Add to Cart
+				</Button>
+			</div>
 		</div>
 	)
 }

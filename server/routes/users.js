@@ -6,7 +6,7 @@ const { auth } = require("../middleware/auth");
 const {Payment} = require('../models/Payment');
 const payment = require('../models/Payment');
 
-const async = require('async');
+//const async = require('async');
 const Product = require('../models/Product');
 
 //=================================
@@ -72,9 +72,6 @@ router.post("/logout", auth, (req, res) => {
         });
     });
 });
-
-
-successBuy
 
 router.get('/successBuy',auth,(req,res) =>{
 
@@ -149,14 +146,53 @@ router.get('/successBuy',auth,(req,res) =>{
                 })
             })
         }
-
     )
-
-
-   
-
-
 }) 
+
+router.post("/addToCart", auth, (req, res) => {
+    /* 해당 user의 모든 정보를 가져온다. */
+    User.findOne({_id: req.user._id },
+        (err, userInfo) => {
+            let duplicate = false;
+            userInfo.cart.forEach((item) => {
+                if (item.id === req.body.productId) {
+                    duplicate = true;
+                }
+            }) 
+            /* 상품이 이미 있으면 수량을 올려준다. */
+            if (duplicate) {
+                User.findOneAndUpdate(
+                    {_id: req.user._id, "cart.id": req.body.productId },
+                    { $inc : {"cart.$.quantity": 1}},
+                    { new: true }, // update정보를 받기 위해서 필요한 옵션
+                    (err, userInfo) => {
+                        if(err) return res.status(200).json({ success: false, err })
+                        res.status(200).send(userInfo.cart);
+                    }
+                )
+                
+            /* 없으면 상품 정보를 넣어야 한다. */
+            } else {
+                User.findOneAndUpdate(
+                    {_id: req.user._id},
+                    {
+                        $push: {
+                            cart: {
+                                id: req.body.productId,
+                                quantity: 1,
+                                date: Date.now()
+                            }
+                        }
+                    },
+                    { new : true },
+                    (err, userInfo) => {
+                        if (err) return res.status(400).json({ success: false, err })
+                        res.status(200).send(userInfo.cart) 
+                    }
+                )
+            }
+        });
+});
 
 
 module.exports = router;
