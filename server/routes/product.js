@@ -38,6 +38,7 @@ router.post("/", (req, res) => {
 router.post("/products", (req, res) => {
   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+  let term = req.body.searchTerm;
 
   let findArgs = {};
 
@@ -55,7 +56,10 @@ router.post("/products", (req, res) => {
   }
 
   console.log(findArgs);
-  Product.find(findArgs)
+  console.log('term: ', term)
+  if (term) {
+    Product.find(findArgs)
+    .find({ $text: { $search: term }})
     .populate("writer")
     .skip(skip)
     .limit(limit)
@@ -66,6 +70,35 @@ router.post("/products", (req, res) => {
         postSize: info.length
       });
     })
+  } else {
+    Product.find(findArgs)
+    .populate("writer")
+    .skip(skip)
+    .limit(limit)
+    .exec((err, info) => {
+      if (err) return res.status(400).json({ success: false, err });
+      return res.status(200).json({ 
+        success: true, info ,
+        postSize: info.length
+      });
+    })
+  }
 });
+
+router.get("/products_by_id", (req, res) => {
+  // get방식에서는 req.query를 사용한다.
+  let type = req.query.type;
+  let productId = req.query.id;
+
+  Product.find({ _id: productId })
+    .populate('writer')
+    .exec((err, product) => {
+      if (err) return res.status(400).send(err)
+      return res.status(200).send({ success: true, product })
+    })
+
+});
+
+
 
 module.exports = router;

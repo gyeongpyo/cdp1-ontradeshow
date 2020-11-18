@@ -44,6 +44,17 @@ const productSchema = mongoose.Schema({
 	}
 }, { timestamps: true })
 
+// 어떤 attribute를 중점적으로 검색할 것인지 결정한다.
+productSchema.index({
+	title: 'text',
+	simple_description: 'text',
+}, {
+	// title을 simple_description의 5배 정도 중요하다 가정하고 검색한다.
+	weights: {
+		title: 5,
+		simple_description: 1
+	}
+})
 
 const Product = mongoose.model('Product', productSchema);
 
