@@ -3,12 +3,16 @@ import { FaCode, FaSortAmountDown } from "react-icons/fa";
 import axios from 'axios';
 import ImageSlider from '../../utils/ImageSlider';
 import { Carousel } from 'antd';
-import { banner_1 } from './banner/banner_1.png';
+import  banner_1  from './banner/banner_1.png';
+import  banner_2  from './banner/banner_2.jpg';
+import  banner_3  from './banner/banner_3.jpg';
+import  banner_4  from './banner/banner_4.jpg';
 import {Button}from 'antd';
+import Footer from '../Footer/Footer';
 
 function LandingPage() {
     const contentStyle = {
-        height: '400px',
+          height: '400px',
         color: '#fff',
         lineHeight: '160px',
         textAlign: 'center',
@@ -17,7 +21,11 @@ function LandingPage() {
 
 
       const buttonSt = {
-          width : '55px'
+          border: "1px solid #364d79",
+          color: "#364d79",
+          background: "white",
+          width : '150px',
+          margin:'45px',
       };
 
     useEffect(() => {
@@ -34,30 +42,39 @@ function LandingPage() {
       <div>
           <Carousel autoplay>
             <div>
-            <h3 style={contentStyle}>1</h3>
-            {/* <img style={{width: '100%', height: '400px'}} src={banner_1}/> */}
+            <h3 style={contentStyle}>{ <img style={{width: '100%', height: '400px'}} src={banner_1}/> }</h3>
+            
             </div>
+
             <div>
-            <h3 style={contentStyle}>2</h3>
+            <h3 style={contentStyle}> { <img style={{width: '100%', height: '400px'}} src={banner_2}/> }</h3>
+           
             </div>
+
             <div>
-            <h3 style={contentStyle}>3</h3>
+            <h3 style={contentStyle}> { <img style={{width: '100%', height: '400px'}} src={banner_3}/> }</h3>
+           
             </div>
+            
             <div>
-            <h3 style={contentStyle}>4</h3>
+            <h3 style={contentStyle}> { <img style={{width: '100%', height: '400px'}} src={banner_4}/> }</h3>
+           
             </div>
-        <div>
- 
-         </div>
-        
 
         </Carousel>
-        <div>
-        <Button type="primary" style = {buttonSt}>music</Button>  <Button type="primary" style = {buttonSt}>science</Button>    <Button type="primary" style = {buttonSt}>computer</Button>    <Button type="primary" style = {buttonSt}>menu1</Button>     <Button type="primary" style = {buttonSt}>menu2</Button>
-        </div>
-        
-      </div>  
+         
 
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: "2%"}}>
+        <h2>Category</h2>
+        </div>
+
+        <div  style={{display: 'flex', justifyContent: 'center'}} >
+        <Button type="primary" style = {buttonSt}>BUSINESS</Button>  <Button type="primary" style = {buttonSt}>IT</Button>    
+        <Button type="primary" style = {buttonSt}>AUTOMOBILE</Button>    <Button type="primary" style = {buttonSt}>MEDIA</Button>     
+        <Button type="primary" style = {buttonSt}>OTHERS</Button>
+        </div>
+      </div>  
+ 
     );
     
 }
