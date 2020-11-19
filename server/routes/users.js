@@ -23,6 +23,10 @@ router.get("/auth", auth, (req, res) => {
         lastname: req.user.lastname,
         role: req.user.role,
         image: req.user.image,
+        /* cart가 들어있지 않아서 페이지 이동시에 cart정보가 사라진다. */
+        /* cart와 history가 있다면 정보를 넣어준다. */
+        cart: req.user.cart,
+        history: req.user.history
     });
 });
 
