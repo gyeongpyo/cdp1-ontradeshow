@@ -46,12 +46,12 @@ function LandingPage() {
             <div>
             <h3 style={contentStyle}>4</h3>
             </div>
-        <div>
+            <div>
  
-         </div>
+            </div>
         
 
-        </Carousel>
+            </Carousel>
         <div>
         <Button type="primary" style = {buttonSt}>music</Button>  <Button type="primary" style = {buttonSt}>science</Button>    <Button type="primary" style = {buttonSt}>computer</Button>    <Button type="primary" style = {buttonSt}>menu1</Button>     <Button type="primary" style = {buttonSt}>menu2</Button>
         </div>

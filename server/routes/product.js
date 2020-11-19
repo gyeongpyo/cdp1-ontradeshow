@@ -88,13 +88,24 @@ router.post("/products", (req, res) => {
 router.get("/products_by_id", (req, res) => {
   // get방식에서는 req.query를 사용한다.
   let type = req.query.type;
-  let productId = req.query.id;
+  let productIds = req.query.id;
 
-  Product.find({ _id: productId })
+  /*
+    id=value1, value2, value3로 오는 형식을
+    id=[value1, value2, value3]로 바꿔야 한다.
+  */
+  if (type === "array") {
+    let ids = req.query.id.split(',');
+    productIds = ids.map(item => {
+      return item
+    })
+  }
+
+  Product.find({ _id: {$in: productIds} })
     .populate('writer')
     .exec((err, product) => {
       if (err) return res.status(400).send(err)
-      return res.status(200).send({ success: true, product })
+      return res.status(200).json({ success: true, product })
     })
 
 });

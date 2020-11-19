@@ -35,12 +35,7 @@ function DetailEventPage(props) {
 					<ProductInfo detail={Product}/>
 				</Col>
 			</Row>
-
 			<br />
-			
-
-			
-			
 		</div>
 	)
 }
