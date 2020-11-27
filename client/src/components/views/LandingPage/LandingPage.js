@@ -9,24 +9,29 @@ import  banner_3  from './banner/banner_3.jpg';
 import  banner_4  from './banner/banner_4.jpg';
 import {Button}from 'antd';
 import Footer from '../Footer/Footer';
+import {useHistory} from "react-router";
 
-function LandingPage() {
+
+
+function LandingPage(props) {
+    const history = useHistory();
+
     const contentStyle = {
-          height: '400px',
+        height: '400px',
         color: '#fff',
         lineHeight: '160px',
         textAlign: 'center',
         background: '#364d79',
-      };
+    };
 
 
-      const buttonSt = {
-          border: "1px solid #364d79",
-          color: "#364d79",
-          background: "white",
-          width : '150px',
-          margin:'45px',
-      };
+    const buttonSt = {
+        border: "1px solid #364d79",
+        color: "#364d79",
+        background: "white",
+        width : '150px',
+        margin:'45px',
+    };
 
     useEffect(() => {
         axios.post('api/product/products')
@@ -38,6 +43,16 @@ function LandingPage() {
                 }
             })
     }, [])
+
+    const categoryButtonHandler = (category) => {
+
+      history.push({
+        pathname: '/event/search',
+        //search: `?query=${category}`
+        state: {category: category}
+      });
+    }
+
     return (
       <div>
           <Carousel autoplay>
@@ -69,15 +84,15 @@ function LandingPage() {
         </div>
 
         <div  style={{display: 'flex', justifyContent: 'center'}} >
-        <Button type="primary" style = {buttonSt}>BUSINESS</Button>  <Button type="primary" style = {buttonSt}>IT</Button>    
-        <Button type="primary" style = {buttonSt}>AUTOMOBILE</Button>    <Button type="primary" style = {buttonSt}>MEDIA</Button>     
-        <Button type="primary" style = {buttonSt}>OTHERS</Button>
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}>BUSINESS</Button>
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(2)}>IT</Button>    
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(3)}>AUTOMOBILE</Button>
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(4)}>MEDIA</Button>     
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler()}>OTHERS</Button>
         </div>
       </div>  
  
-    );
-    
+    );    
 }
-
 
 export default LandingPage

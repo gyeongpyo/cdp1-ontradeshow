@@ -10,8 +10,8 @@ import { price, categories } from './Sections/Datas';
 
 
 
-function SearchPage() {
-
+function SearchPage(props) {
+	console.log(props.location.state.category);
 	const [Events, setEvents] = useState([]);
 	const [Skip, setSkip] = useState(0);
 	const [Limit, setLimit] = useState(8);
@@ -102,7 +102,7 @@ function SearchPage() {
 	const handleFilters = (filters, category) => {
 		const newFilters = {...Filters};
 		newFilters[category] = filters;
-
+		console.log(newFilters);
 		if (category === "price") {
 			let priceValues = handlePrice(filters)
 			newFilters[category] = priceValues;
