@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getCartItems, removeCartItem } from '../../../_actions/user_actions'
+import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock'
-import { Empty } from 'antd';
+import { Result, Empty } from 'antd';
 import Paypal from '../../utils/Paypal'
 function CartPage(props) {
 	const dispatch = useDispatch();
 
 	const [Total, setTotal] = useState(0);
 	const [ShowTotal, setShowTotal] = useState(false); //true이면 total을 보여준다.
+	const [ShowSuccess, setShowSuccess] = useState(false);
 
 	useEffect(() => {
 		let cartItems = [];
@@ -33,6 +34,7 @@ function CartPage(props) {
 		})
 		setTotal(total);
 		setShowTotal(true);
+		setShowSuccess(false);
 	}
 
 	let removeFromCart = (productId) => {
@@ -40,6 +42,19 @@ function CartPage(props) {
 			.then(res => {
 				if (res.payload.productInfo.length <= 0) {
 					setShowTotal(false);
+				}
+			})
+	}
+
+	const transactionSuccess = (data) => {
+		dispatch(onSuccessBuy({
+			paymentData: data,
+			cartDetail: props.user.cartDetail
+		}))
+			.then(res => {
+				if (res.payload.success) {
+					setShowTotal(false);
+					setShowSuccess(true);		
 				}
 			})
 	}
@@ -52,18 +67,28 @@ function CartPage(props) {
 				<UserCardBlock products={props.user.cartDetail} removeItem={removeFromCart}/>
 			</div>
 
+			
+
 			{ShowTotal ?
 				<div style={{ marginTop: '3rem' }}>
 					<h2> Total Amount: ${Total}</h2>
 				</div>
-				:
+				: ShowSuccess?
+					<Result
+						status="success"
+						title="Successfully Purchased Items"
+		  			/>
+					:
 				<div>
 				<br/>
 				<Empty description={false}/>
 				</div>
 			}
 
-			<Paypal />
+			{ShowTotal && 
+				<Paypal total={Total} onSuccess={transactionSuccess}/>
+			}
+			
 			
 		</div>
 	)
