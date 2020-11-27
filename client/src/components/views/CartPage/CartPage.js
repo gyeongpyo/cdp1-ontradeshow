@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getCartItems } from '../../../_actions/user_actions'
+import { getCartItems, removeCartItem } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock'
+import { Empty } from 'antd';
 function CartPage(props) {
 	const dispatch = useDispatch();
 
 	const [Total, setTotal] = useState(0);
+	const [ShowTotal, setShowTotal] = useState(false); //true이면 total을 보여준다.
 
 	useEffect(() => {
 		let cartItems = [];
@@ -29,6 +31,16 @@ function CartPage(props) {
 			total += parseInt(item.price, 10) * item.quantity;
 		})
 		setTotal(total);
+		setShowTotal(true);
+	}
+
+	let removeFromCart = (productId) => {
+		dispatch(removeCartItem(productId))
+			.then(res => {
+				if (res.payload.productInfo.length <= 0) {
+					setShowTotal(false);
+				}
+			})
 	}
 
 	return (
@@ -36,12 +48,19 @@ function CartPage(props) {
 			<h1>My Cart</h1>
 			<div>
 				{/* cartDetail이 없을 때 읽어들여서 오류가 발생한다. */}
-				<UserCardBlock products={props.user.cartDetail}/>
+				<UserCardBlock products={props.user.cartDetail} removeItem={removeFromCart}/>
 			</div>
 
-			<div style={{ marginTop: '3rem' }}>
-				<h2> Total Amount: ${Total}</h2>
-			</div>
+			{ShowTotal ?
+				<div style={{ marginTop: '3rem' }}>
+					<h2> Total Amount: ${Total}</h2>
+				</div>
+				:
+				<div>
+				<br/>
+				<Empty description={false}/>
+				</div>
+			}
 		</div>
 	)
 }

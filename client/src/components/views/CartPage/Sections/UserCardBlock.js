@@ -8,6 +8,8 @@ function UserCardBlock(props) {
 		}
 	}
 
+
+	
 	const renderItems = () => (
 		props.products && props.products.map(product => (
 			<tr key={product._id}>
@@ -23,7 +25,7 @@ function UserCardBlock(props) {
 					$ {product.price}
 				</td>
 				<td>
-					<button>
+					<button onClick={() => props.removeItem(product._id)}>
 						Remove
 					</button>
 				</td>
