@@ -1,12 +1,21 @@
-// const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-// const paymentSchema = mongoose.Schema({
+const paymentSchema = mongoose.Schema({
+	user: {
+		type: Array,
+		default: []
+	},
+	data: {
+		type: Array,
+		default: []
+	},
+	product: {
+		type: Array,
+		default: []
+	}
+}, { timestamps: true })
 
+const Payment = mongoose.model('Payment', paymentSchema);
 
-
-// }, { timestamps: true })
-
-// const payment = mongoose.model('Product', productSchema);
-
-// module.exports = { payment }
+module.exports = { Payment }
