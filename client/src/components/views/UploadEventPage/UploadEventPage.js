@@ -3,7 +3,11 @@ import {Typography, Button, Form, message, Input, Icon } from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import Calendar from 'react-calendar';
 import Axios from 'axios';
-
+import { ArrowRightOutlined } from '@ant-design/icons';
+import './design/UploadEventPage.css'
+import { Container } from "@material-ui/core";
+import autoin_name from './design/autoin_name.png';
+import instruction from './design/instruction.png';
 const{Title} = Typography;
 const{TextArea} = Input;
 
@@ -186,11 +190,43 @@ function UploadEventPage(props) {
   }
 
   return (
-    <div style ={{ maxWidth: '700px', margin: '2rem auto'}}>
-      <div style={{textAlign:'center',marginBottom:'2rem'}}>
-        <Title level={2}> Exhibition Register </Title>
+    <div>
+      <div class='base'>
+      <div className='container'>
+        <p class='unclrlayer'>
+         <br/>
+         <span class='text1'> EXHIBITION
+         <br/>
+         </span><span class='text2'> REGISTER</span>
+         <br/>
+         <br/>
+         <img class ='autoinname'
+          src={autoin_name}
+          style={{width: '75px', height: '25px'}}/>
+        </p>
+          
+          
       </div>
-  
+        <div style= {{textAlign: 'center'}}>
+        <div class='Title'>
+            AUTOIN
+            <span class='Title2'>APPLICATION PROCESS</span>
+          </div>
+
+          <img class ='instruction'
+          src={instruction}
+          style={{align: 'center', width: '100%', height: '10%'}}/>
+        </div>
+
+
+      <div class='boxed1'>
+        <div style ={{ maxWidth: '800px', margin: '0 25px 2rem 25px'}}>
+          <div style={{textAlign:'center',marginBottom:'2rem'}}>
+
+        <div class= 'step1'> STEP1. Basic Information </div>
+        <hr class="step1border"/>
+      </div>
+ 
       <Form onSubmit={submitHandler}>
          {/*DropZone*/}
 
@@ -198,8 +234,6 @@ function UploadEventPage(props) {
         {/*}div style={{textAlign:'center'}}>
          <label>Image Upload  (.jpeg .png)</label>  
   </div>*/}
-      <br/>
-      <br/>
     
       <label style={{ fontWeight: 'bold' }}>Exhibition Name  </label>
         <Input
@@ -231,6 +265,9 @@ function UploadEventPage(props) {
       <br/>
       <br/>
 
+      <div class= 'step2'> STEP2. Details (Time & location) </div>
+        <hr class="step2border"/>      
+
       <label style={{ fontWeight: 'bold' }}>Price per Ticket (won)   </label>
         <Input
           onChange={onPriceChange}
@@ -261,7 +298,7 @@ function UploadEventPage(props) {
     <br/>
     <br/>
     
-    <div style={{textAlign:'center',marginBottom:'2rem'}} handleChange={setState.bind(this)}>
+    <div style={{textAlign:'left',marginBottom:'2rem'}} handleChange={setState.bind(this)}>
       <label style={{ fontWeight: 'bold' }}>Location (If the exhibition is held offline, please type the address below) </label>
       
       <br/>
@@ -275,7 +312,7 @@ function UploadEventPage(props) {
       <br/>
       
       <label style={{ fontWeight: 'bold' }}> Address (Offline Exhibition ONLY)
-       <Input
+             <Input
          onChange={onAddressChange}
           value={AddressValue}
        />
@@ -309,15 +346,21 @@ function UploadEventPage(props) {
         </select>
 
       </div>
+      <br/>
+      <br/>
+      <div style={{color: 'red', display: 'flex', justifyContent: 'center',}}>
+      I have filled in all the exhibition information  &nbsp;&nbsp;
 
-    <Button type="submit" onClick={submitHandler}> 
-      Submit
+    <Button style={{marginTop:'-5px'}}type="submit" onClick={submitHandler}> 
+          Submit
     </Button>
-    
+    </div>
     </Form>
   
     </div>
+    </div>
+    </div>
+    </div>
   )
 }
-
 export default UploadEventPage

@@ -1,0 +1,145 @@
+.base{
+    background-color: #e5e5e5;
+}
+
+.boxed1{
+    border: 1px solid white;
+    margin:  0 15% 0 15%;
+    background-color: white;
+    line-height: 200%;
+    font-size:18px;
+    font-size-adjust: inherit;
+    letter-spacing:1.5px;
+}
+.container {
+
+    width: 100%;
+    height:400px;
+    background-image: url("../design/top-banner.jpg");
+    background-size: cover; /* or contain depending on what you want */
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 0 0 2rem 0;
+    display: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+
+  }
+
+.unclrlayer{
+        width: 40%;
+        height: 400px;
+        float: right;
+        padding: 0;
+        font-size: 50px;
+        font-weight: bold;
+        text-align: right;
+        background-color: #ffffff;
+        background-color: rgba( 255, 255, 255, 0.5 );
+      
+}
+
+.text1{
+    font-family: Roboto;
+    font-size: 60px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    letter-spacing: -3px;
+    margin: 30% 5% 5% 5%;
+    color:#144197;
+}
+
+.text2{
+    font-family: Roboto;
+    font-size: 60px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    letter-spacing: -3px;
+    margin: 30% 5% 5% 5%;
+    color: black;
+
+}
+
+.autoinname
+{
+    margin: 20px 2% 5% 5%;
+}
+
+
+.Title{
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 2% 0 -10px 15%;
+    color:#5372ae;
+}
+
+.Title2{
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 2% 0 -10px 8px;
+    color:#454545;
+
+}
+
+.instruction
+{
+    margin: 3% 0 10% 0;
+}
+
+.step1
+{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000000;
+    text-align: left;
+    margin: 10% 0% 0% 0%;
+}
+
+.step1border
+{
+    size: 2px;
+    width: 45%;
+    margin-left: 0%;
+}
+
+.step2
+{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000000;
+    text-align: left;
+    margin: 5% 0% 0% 0%;
+}
+
+.step2border
+{
+    size: 2px;
+    width: 59%;
+    margin-left: 0%;
+    margin-bottom: 5%;
+}
+

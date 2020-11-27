@@ -7,7 +7,7 @@ import  banner_1  from './banner/banner_1.png';
 import  banner_2  from './banner/banner_2.jpg';
 import  banner_3  from './banner/banner_3.jpg';
 import  banner_4  from './banner/banner_4.jpg';
-import {Button}from 'antd';
+import {Button} from 'antd';
 import Footer from '../Footer/Footer';
 import {useHistory} from "react-router";
 
@@ -15,6 +15,11 @@ import {useHistory} from "react-router";
 
 function LandingPage(props) {
     const history = useHistory();
+import { IdcardOutlined } from '@ant-design/icons';
+import { DesktopOutlined } from '@ant-design/icons';
+import { CarOutlined } from '@ant-design/icons';
+import { PlaySquareOutlined } from '@ant-design/icons';
+import { EllipsisOutlined } from '@ant-design/icons';
 
     const contentStyle = {
         height: '400px',
@@ -25,13 +30,13 @@ function LandingPage(props) {
     };
 
 
-    const buttonSt = {
-        border: "1px solid #364d79",
-        color: "#364d79",
-        background: "white",
-        width : '150px',
-        margin:'45px',
-    };
+      const buttonSt = {
+          border: "white", //1px solid #364d79
+          color: "#364d79",
+          background: "white",
+          width : '150px',
+          margin:'45px',
+      };
 
     useEffect(() => {
         axios.post('api/product/products')
@@ -79,16 +84,21 @@ function LandingPage(props) {
         </Carousel>
          
 
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: "2%"}}>
-        <h2>Category</h2>
+        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'center', marginTop: "2%"}}>
+        <h1> Category</h1>
+        </div>
+        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'center'}}>
+        <label style={{ color: "#8d8d8d"}}>Choose the Exhibition category of your desire! {' '}  </label> 
         </div>
 
         <div  style={{display: 'flex', justifyContent: 'center'}} >
-        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}>BUSINESS</Button>
-        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(2)}>IT</Button>    
-        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(3)}>AUTOMOBILE</Button>
-        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(4)}>MEDIA</Button>     
-        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler()}>OTHERS</Button>
+
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</Button>  
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</Button>    
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "#364d79" }} />AUTOMOBILE</Button>    
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</Button>     
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</Button>
+
         </div>
       </div>  
  
