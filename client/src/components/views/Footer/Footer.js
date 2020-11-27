@@ -10,7 +10,7 @@ function Footer() {
         <div className='footer-container'>
         <section className='footer-subscription'>
           <p className='footer-subscription-heading'>
-          Join the Autoin newsletter to receive our latest exhibitions
+          Join the Autoin newsletter to receive our latest exhibitions!
           </p>
           <p className='footer-subscription-text'>
             You can unsubscribe at any time.
@@ -32,7 +32,6 @@ function Footer() {
             <div class='footer-link-items'>
               <h2>About Us</h2>
               <Link to='/sign-up'>How it works</Link>
-              <Link to='/sign-up'>Testimonials</Link>
               <Link to='/sign-up'>Careers</Link>
               <Link to='/sign-up'>Investors</Link>
               <Link to='/sign-up'>Terms of Service</Link>
