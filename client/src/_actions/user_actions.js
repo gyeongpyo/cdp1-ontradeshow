@@ -70,9 +70,9 @@ export function getCartItems(cartItems, userCart){
         .then(response =>{
             userCart.forEach(cartItem => {
                 /* quantity 정보를 추가한다 */
-                response.data.product.forEach((productDetail, i) => {
+                response.data.forEach((productDetail, i) => {
                     if (cartItem.id === productDetail._id) {
-                        response.data.product[i].quantity = cartItem.quantity;
+                        response.data[i].quantity = cartItem.quantity;
                     }
                 })
             })

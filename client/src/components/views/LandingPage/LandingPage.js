@@ -10,16 +10,16 @@ import  banner_4  from './banner/banner_4.jpg';
 import {Button} from 'antd';
 import Footer from '../Footer/Footer';
 import {useHistory} from "react-router";
-
-
-
-function LandingPage(props) {
-    const history = useHistory();
 import { IdcardOutlined } from '@ant-design/icons';
 import { DesktopOutlined } from '@ant-design/icons';
 import { CarOutlined } from '@ant-design/icons';
 import { PlaySquareOutlined } from '@ant-design/icons';
 import { EllipsisOutlined } from '@ant-design/icons';
+
+
+function LandingPage(props) {
+    const history = useHistory();
+
 
     const contentStyle = {
         height: '400px',
@@ -30,13 +30,13 @@ import { EllipsisOutlined } from '@ant-design/icons';
     };
 
 
-      const buttonSt = {
-          border: "white", //1px solid #364d79
-          color: "#364d79",
-          background: "white",
-          width : '150px',
-          margin:'45px',
-      };
+    const buttonSt = {
+        border: "white", //1px solid #364d79
+        color: "#364d79",
+        background: "white",
+        width : '150px',
+        margin:'45px',
+    };
 
     useEffect(() => {
         axios.post('api/product/products')

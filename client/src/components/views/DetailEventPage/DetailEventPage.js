@@ -13,13 +13,9 @@ function DetailEventPage(props) {
 	useEffect(() => {
 		axios.get(`/api/product/products_by_id?id=${eventId}&type=single`)
 			.then(res => {
-				if (res.data.success) {
-					console.log('res.data: ', res.data);
-					setProduct(res.data.product[0])
-				} else {
-					alert('Fail to load the detail information of the event')
-				}
+				setProduct(res.data[0]);					
 			})
+			.catch(err => alert(err))
 	}, [])
 	return (
 		<div style={{ width: '100%', padding: '3rem 4rem'}}>

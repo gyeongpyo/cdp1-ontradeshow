@@ -11,7 +11,7 @@ import { price, categories } from './Sections/Datas';
 
 
 function SearchPage(props) {
-	console.log(props.location.state.category);
+	//console.log(props.location.state.category);
 	const [Events, setEvents] = useState([]);
 	const [Skip, setSkip] = useState(0);
 	const [Limit, setLimit] = useState(8);
