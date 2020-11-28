@@ -8,12 +8,13 @@ function ProductInfo(props) {
 	const clickHandler = () => {
 		/* redux를 사용 */
 		dispatch(addToCart(props.detail._id));
+		alert("This event is added to your cart");
 	}
 	return (
 		<div>
 			ProductInfo
 			<div style={{ display: 'flex', justifyContent:'center' }}>
-				<Button size="large" shape="round" type="danger" onClick={clickHandler}>
+				<Button size="large" shape="round" type="primary" onClick={clickHandler}>
 					Add to Cart
 				</Button>
 			</div>

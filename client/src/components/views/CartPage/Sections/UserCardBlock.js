@@ -37,18 +37,19 @@ function UserCardBlock(props) {
 	return (
 		<div>
 			<table>
-				<thread>
+				<thead>
 					<tr>
 						<th>Product Image</th>
 						<th>Product Quantity</th>
 						<th>Product Price</th>
 						<th>Remove from Cart</th>
 					</tr>
-				</thread>
+				</thead>
+			
+				<tbody>
+					{renderItems()}
+				</tbody>
 			</table>
-			<tbody>
-				{renderItems()}
-			</tbody>
 		</div>
 	)
 }

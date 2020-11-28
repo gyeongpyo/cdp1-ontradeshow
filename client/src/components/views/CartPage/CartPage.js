@@ -85,11 +85,11 @@ function CartPage(props) {
 				</div>
 			}
 
+			<div style={{alignItems: 'flex-end'}}>
 			{ShowTotal && 
 				<Paypal total={Total} onSuccess={transactionSuccess}/>
 			}
-			
-			
+			</div>
 		</div>
 	)
 }

@@ -41,10 +41,10 @@ function RightMenu(props) {
           <a href="/event/upload">Open</a>
         </Menu.Item>
 
-        <Menu.Item key="cart">
+        <Menu.Item key="cart" style={{ paddingBottom: 3 }}>
           <Badge count={user.userData && user.userData.cart.length} style={{marginTop:7}}>
-            <a href="/user/cart" className="head-example" >
-              <div style={{ marginBottom: -5 }}> Cart </div>
+            <a href="/user/cart">
+              <div style={{ marginTop: 5, marginBottom:-7}}> Cart </div>
             </a>
           </Badge>
         </Menu.Item>

@@ -16,10 +16,16 @@ function ProductImage(props) {
 		}
 	}, [props.detail])
 
+	// image는 포스터 한 개만 있다고 가정
 	return (
 		<div>
-			<ImageGallery items={Images} />
+			{Images.length > 0 &&
+				<div >
+				<img src={Images[0].original} style={{width: '100%', maxHeight:'400px'}} />
+			</div>
+			}
 		</div>
+		
 	)
 }
 

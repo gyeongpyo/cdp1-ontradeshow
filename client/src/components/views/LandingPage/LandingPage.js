@@ -20,16 +20,6 @@ import { EllipsisOutlined } from '@ant-design/icons';
 function LandingPage(props) {
     const history = useHistory();
 
-
-    const contentStyle = {
-        height: '400px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: '#364d79',
-    };
-
-
     const buttonSt = {
         border: "white", //1px solid #364d79
         color: "#364d79",
@@ -62,23 +52,19 @@ function LandingPage(props) {
       <div>
           <Carousel autoplay>
             <div>
-            <h3 style={contentStyle}>{ <img style={{width: '100%', height: '400px'}} src={banner_1}/> }</h3>
-            
+            <h3>{ <img style={{width: '100%', height: '100%'}} src={banner_1}/> }</h3>
             </div>
 
             <div>
-            <h3 style={contentStyle}> { <img style={{width: '100%', height: '400px'}} src={banner_2}/> }</h3>
-           
+            <h3> { <img style={{width: '100%', height: '100%'}} src={banner_2}/> }</h3>
             </div>
 
             <div>
-            <h3 style={contentStyle}> { <img style={{width: '100%', height: '400px'}} src={banner_3}/> }</h3>
-           
+            <h3> { <img style={{width: '100%', height: '100%'}} src={banner_3}/> }</h3>
             </div>
             
             <div>
-            <h3 style={contentStyle}> { <img style={{width: '100%', height: '400px'}} src={banner_4}/> }</h3>
-           
+            <h3> { <img style={{width: '100%', height: '100%'}} src={banner_4}/> }</h3>
             </div>
 
         </Carousel>
