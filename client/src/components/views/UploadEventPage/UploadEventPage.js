@@ -8,6 +8,9 @@ import './design/UploadEventPage.css'
 import { Container } from "@material-ui/core";
 import autoin_name from './design/autoin_name.png';
 import instruction from './design/instruction.png';
+import { DatePicker } from 'antd';
+
+
 const{Title} = Typography;
 const{TextArea} = Input;
 
@@ -21,60 +24,6 @@ const Quantities = [
   {key: 7, value: "300 +"}
 ]
 
-const STime = [
-	{key: 1, value: "   00:00 ~          "},
-	{key: 2, value: "   01:00 ~          "},
-	{key: 3, value: "   02:00 ~          "},
-  {key: 4, value: "   03:00 ~          "},
-  {key: 5, value: "   04:00 ~          "},
-  {key: 6, value: "   05:00 ~          "},
-  {key: 7, value: "   06:00 ~          "},
-  {key: 8, value: "   07:00 ~          "},
-	{key: 9, value: "   08:00 ~          "},
-	{key: 10, value: "   09:00 ~          "},
-  {key: 11, value: "   10:00 ~          "},
-  {key: 12, value: "   11:00 ~          "},
-  {key: 13, value: "   12:00 ~          "},
-	{key: 14, value: "   13:00 ~          "},
-	{key: 15, value: "   14:00 ~          "},
-	{key: 16, value: "   15:00 ~          "},
-  {key: 17, value: "   16:00 ~          "},
-  {key: 18, value: "   17:00 ~          "},
-  {key: 19, value: "   18:00 ~          "},
-  {key: 20, value: "   19:00 ~          "},
-  {key: 21, value: "   20:00 ~          "},
-	{key: 22, value: "   21:00 ~          "},
-	{key: 23, value: "   22:00 ~          "},
-  {key: 24, value: "   23:00 ~          "}
-]
-
-const FTime = [
-	{key: 1, value: "   00:00 "},
-	{key: 2, value: "   01:00 "},
-	{key: 3, value: "   02:00 "},
-  {key: 4, value: "   03:00 "},
-  {key: 5, value: "   04:00 "},
-  {key: 6, value: "   05:00 "},
-  {key: 7, value: "   06:00 "},
-  {key: 8, value: "   07:00 "},
-	{key: 9, value: "   08:00 "},
-	{key: 10, value: "   09:00 "},
-  {key: 11, value: "   10:00 "},
-  {key: 12, value: "   11:00 "},
-  {key: 13, value: "   12:00 "},
-	{key: 14, value: "   13:00 "},
-	{key: 15, value: "   14:00 "},
-	{key: 16, value: "   15:00 "},
-  {key: 17, value: "   16:00 "},
-  {key: 18, value: "   17:00 "},
-  {key: 19, value: "   18:00 "},
-  {key: 20, value: "   19:00 "},
-  {key: 21, value: "   20:00 "},
-	{key: 22, value: "   21:00 "},
-	{key: 23, value: "   22:00 "},
-  {key: 24, value: "   23:00 "}
-]
-
 const Exhibitions = [
 	{key: 1, value: "Business"},
 	{key: 2, value: "IT development"},
@@ -82,14 +31,15 @@ const Exhibitions = [
 	{key: 4, value: "Media"}
 ]
 
-
+const { RangePicker } = DatePicker;
 function UploadEventPage(props) {
+  
 
   const [Images, setImages]=useState([])                                //전시회 이미지
 
   const [date, setDate]=useState(new Date())                            //전시회 일정
-  const [STimeValue, setSTimeSelectChange] = useState(1)  
-  const [FTimeValue, setFTimeSelectChange] = useState(1)
+  const [StartTime, setStartTime] = useState(null)
+  const [EndTime, setEndTime] = useState(null)
   
   const [TitleValue, setTitleValue] = useState("")                      //전시회 제목
   const [ExhibitionValue, setExhibitionSelectChange] = useState(1)      //전시회 카타고리
@@ -104,16 +54,19 @@ function UploadEventPage(props) {
   const [value, setState] = useState(null);                             //온오프여부, 주소
   const [AddressValue, setAddressValue] = useState("")     
 
-  const onChange=(date)=>{
-     setDate(date)
+
+  const handleStartTime = (time, timeString) => {
+    console.log(time, timeString);
+    setStartTime(time);
   }
 
-  const onSTimeSelectChange = (event) => {
-     setSTimeSelectChange(event.currentTarget.value);
+  const handleEndTime = (time, timeString) => {
+    console.log(time, timeString);
+    setEndTime(time);
   }
-  
-  const onFTimeSelectChange = (event) => {
-      setFTimeSelectChange(event.currentTarget.value);
+
+  const onChange=(date)=>{
+     setDate(date)
   }
 
   const onTitleChange=(event)=>{
@@ -323,38 +276,28 @@ function UploadEventPage(props) {
       <FileUpload refreshFunction={updateImages}/>
     </label>
     
-
-    <div style={{textAlign:'center'}}>
-        <Calendar onChange={onChange} value={date}/>
+   
+          
+    <div style={{textAlign:'left'}}>
         <br/>
-        <label style={{ fontWeight: 'bold' }}>Exhibition Start Time : {' '}  </label>
-          <select onChange={setSTimeSelectChange}>
-
-            {STime.map(item =>(
-              <option key={item.key} value={item.value}>{item.value}</option>
-            ))}  
-
-          </select>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label style={{ fontWeight: 'bold' }}>Exhibition End Time : {' '}  </label>
-        
-        <select onChange={setFTimeSelectChange}>
-         {FTime.map(item =>(
-          <option key={item.key} value={item.value}>{item.value}</option>
-          ))}  
-
-        </select>
-
+        <label style={{ fontWeight: 'bold' }}>Exhibition Start Time - Exhibition End Time {' '}  </label>
+  
+        <div>
+          <RangePicker showTime />
+        </div>
       </div>
       <br/>
       <br/>
-      <div style={{color: 'red', display: 'flex', justifyContent: 'center',}}>
-      I have filled in all the exhibition information  &nbsp;&nbsp;
+      <div style={{color: 'red', display: 'flex', justifyContent: 'center'}}>
+      I have filled in all the exhibition information
+      </div>
+      <br/>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
 
-    <Button style={{marginTop:'-5px'}}type="submit" onClick={submitHandler}> 
-          Submit
-    </Button>
-    </div>
+        <Button style={{marginTop:'-5px'}}type="submit" onClick={submitHandler}> 
+              Submit
+        </Button>
+      </div>  
     </Form>
   
     </div>

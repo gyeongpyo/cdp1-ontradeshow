@@ -14,6 +14,14 @@ const productSchema = mongoose.Schema({
 		type: Number,
 		default: 1
 	},
+	startTime: {
+		type: Date,
+		default: null
+	},
+	endTime: {
+		type: Date,
+		default: null
+	},
 	simple_description: {
 		type: String,
 	},
