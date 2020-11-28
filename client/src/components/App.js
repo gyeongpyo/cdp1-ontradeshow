@@ -11,6 +11,7 @@ import UploadEventPage from "./views/UploadEventPage/UploadEventPage.js";
 import SearchPage from "./views/SearchPage/SearchPage.js";
 import DetailEventPage from "./views/DetailEventPage/DetailEventPage.js"
 import CartPage from './views/CartPage/CartPage.js';
+import HistoryPage from './views/HistoryPage/HistoryPage.js';
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -27,7 +28,8 @@ function App() {
           <Route exact path="/event/upload" component={Auth(UploadEventPage, true)} />
           <Route exact path="/event/search" component={Auth(SearchPage, null)} />
           <Route exact path="/event/:eventId" component={Auth(DetailEventPage, null)} />
-          <Route exact path="/user/cart" component={Auth(CartPage, true)} />
+          <Route exact path="/history" component={Auth(HistoryPage, true)} />
+
         </Switch>
       </div>
       <Footer />
