@@ -20,6 +20,16 @@ import { EllipsisOutlined } from '@ant-design/icons';
 function LandingPage(props) {
     const history = useHistory();
 
+const icons = {border: "white", //1px solid #364d79
+color: "#364d79",
+background: "white",
+width : '150px',
+height : '50%',
+margin:'45px',
+fontSize: '32px',
+ 
+};
+
     const buttonSt = {
         border: "white", //1px solid #364d79
         color: "#364d79",
@@ -70,13 +80,21 @@ function LandingPage(props) {
         </Carousel>
          
 
-        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'center', marginTop: "2%"}}>
-        <h1> Category</h1>
+        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left', marginTop: "2%"}}>
+        <h1> &nbsp;&nbsp;&nbsp;&nbsp;Category</h1>
         </div>
-        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'center'}}>
-        <label style={{ color: "#8d8d8d"}}>Choose the Exhibition category of your desire! {' '}  </label> 
+        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
+        <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose the Exhibition category of your desire! {' '}  </label> 
         </div>
+<div  style={{display: 'flex', justifyContent: 'center'}} >
 
+        <IdcardOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</IdcardOutlined>  
+        <DesktopOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</DesktopOutlined>    
+        <CarOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "#364d79" }} />AUTOMOBILE</CarOutlined>    
+        <PlaySquareOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</PlaySquareOutlined>     
+        <EllipsisOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</EllipsisOutlined>
+
+        </div>
         <div  style={{display: 'flex', justifyContent: 'center'}} >
 
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</Button>  
