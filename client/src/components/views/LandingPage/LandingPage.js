@@ -36,6 +36,11 @@ fontSize: '32px',
         width : '150px',
         margin:'45px',
     };
+    const sss = {
+      
+      margin :'3%',
+
+    };
 
     useEffect(() => {
         axios.post('api/product/products')
@@ -85,16 +90,17 @@ fontSize: '32px',
         <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
         <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose the Exhibition category of your desire! {' '}  </label> 
         </div>
-<div  style={{display: 'flex', justifyContent: 'center'}} >
+      <div  style={{display: 'flex', justifyContent: 'center', marginBottom : '1%',border : '1px', borderColor : 'Red'}} >
 
+        
         <IdcardOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</IdcardOutlined>  
         <DesktopOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</DesktopOutlined>    
         <CarOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "#364d79" }} />AUTOMOBILE</CarOutlined>    
         <PlaySquareOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</PlaySquareOutlined>     
         <EllipsisOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</EllipsisOutlined>
-
+        
         </div>
-        <div  style={{display: 'flex', justifyContent: 'center'}} >
+        <div  style={{display: 'flex', justifyContent: 'center', marginTop : '1%'}} >
 
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</Button>  
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</Button>    
