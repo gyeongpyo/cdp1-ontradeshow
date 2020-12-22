@@ -28,7 +28,8 @@ const Exhibitions = [
 	{key: 1, value: "Business"},
 	{key: 2, value: "IT development"},
 	{key: 3, value: "Automobile" },
-	{key: 4, value: "Media"}
+  {key: 4, value: "Media"},
+  {key: 5, value: "MOBILE"}
 ]
 
 const { RangePicker } = DatePicker;

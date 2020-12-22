@@ -14,20 +14,61 @@ import { IdcardOutlined } from '@ant-design/icons';
 import { DesktopOutlined } from '@ant-design/icons';
 import { CarOutlined } from '@ant-design/icons';
 import { PlaySquareOutlined } from '@ant-design/icons';
+import { AndroidOutlined } from '@ant-design/icons';
 import { EllipsisOutlined } from '@ant-design/icons';
+
+
 
 
 function LandingPage(props) {
     const history = useHistory();
+    
 
-const icons = {border: "white", //1px solid #364d79
+const IdcardOutlinedst = {border: "white", //1px solid #364d79
+color: "#F39932",
+background: "white",
+width : '150px',
+margin:'45px',
+fontSize: '32px',
+};
+
+const DesktopOutlinedst = {border: "white", //1px solid #364d79
+color: "#774E9B",
+background: "white",
+width : '150px',
+margin:'45px',
+fontSize: '32px',
+};
+
+const CarOutlinedst = {border: "white", //1px solid #364d79
+color: "#24AAE4",
+background: "white",
+width : '150px',
+margin:'45px',
+fontSize: '32px',
+};
+
+const PlaySquareOutlinedst = {border: "white", //1px solid #364d79
+color: "#F90303",
+background: "white",
+width : '150px',
+margin:'45px',
+fontSize: '32px',
+};
+const AndroidOutlinedst = {border: "white", //1px solid #364d79
+color: "#A3EA64",
+background: "white",
+width : '150px',
+margin:'45px',
+fontSize: '32px',
+};
+
+const EllipsisOutlinedst = {border: "white", //1px solid #364d79
 color: "#364d79",
 background: "white",
 width : '150px',
-height : '50%',
 margin:'45px',
 fontSize: '32px',
- 
 };
 
     const buttonSt = {
@@ -81,26 +122,28 @@ fontSize: '32px',
          
 
         <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left', marginTop: "2%"}}>
-        <h1> &nbsp;&nbsp;&nbsp;&nbsp;Category</h1>
+        <h1> &nbsp;&nbsp;&nbsp;&nbsp;가장 인기있는 카테고리</h1>
         </div>
         <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
-        <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose the Exhibition category of your desire! {' '}  </label> 
+        <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관심지수가 가장 높은 인기 카테고리는 여기서 찾아보세요! {' '}  </label> 
         </div>
-<div  style={{display: 'flex', justifyContent: 'center'}} >
+<div  style={{display: 'flex', justifyContent: 'center',}} >
 
-        <IdcardOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</IdcardOutlined>  
-        <DesktopOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</DesktopOutlined>    
-        <CarOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "#364d79" }} />AUTOMOBILE</CarOutlined>    
-        <PlaySquareOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</PlaySquareOutlined>     
-        <EllipsisOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</EllipsisOutlined>
+        <IdcardOutlined type="primary" style = {IdcardOutlinedst} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#123d79" }} /> BUSINESS</IdcardOutlined>  
+        <DesktopOutlined type="primary" style = {DesktopOutlinedst} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#123d79" }} />IT</DesktopOutlined>    
+        <CarOutlined type="primary" style = {CarOutlinedst} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "eb2f96" }} />AUTOMOBILE</CarOutlined>    
+        <PlaySquareOutlined type="primary" style = {PlaySquareOutlinedst} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</PlaySquareOutlined> 
+        <AndroidOutlined type="primary" style = {AndroidOutlinedst} onClick={() => categoryButtonHandler(4)}><AndroidOutlined style={{color: "#364d79" }} />MOBILE</AndroidOutlined>    
+        <EllipsisOutlined type="primary" style = {EllipsisOutlinedst} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</EllipsisOutlined>
 
         </div>
-        <div  style={{display: 'flex', justifyContent: 'center'}} >
+        <div  style={{display: 'flex', justifyContent: 'center',marginTop: "-4%"}} >
 
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</Button>  
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</Button>    
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "#364d79" }} />AUTOMOBILE</Button>    
-        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</Button>     
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</Button> 
+        <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(4)}><AndroidOutlined style={{color: "#364d79" }} />MOBILE</Button>    
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</Button>
 
         </div>
