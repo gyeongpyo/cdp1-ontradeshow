@@ -71,26 +71,12 @@ margin:'45px',
 fontSize: '32px',
 };
 
-const icons = {border: "white", //1px solid #364d79
-color: "#364d79",
-background: "white",
-width : '150px',
-margin:'45px',
-fontSize: '32px',
- 
-};
-
     const buttonSt = {
         border: "white", //1px solid #364d79
         color: "#364d79",
         background: "white",
         width : '150px',
         margin:'45px',
-    };
-    const sss = {
-      
-      margin :'3%',
-
     };
 
     useEffect(() => {
@@ -136,7 +122,6 @@ fontSize: '32px',
          
 
         <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left', marginTop: "2%"}}>
-<<<<<<< HEAD
         <h1> &nbsp;&nbsp;&nbsp;&nbsp;가장 인기있는 카테고리</h1>
         </div>
         <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
@@ -153,24 +138,6 @@ fontSize: '32px',
 
         </div>
         <div  style={{display: 'flex', justifyContent: 'center',marginTop: "-4%"}} >
-=======
-        <h1> &nbsp;&nbsp;&nbsp;&nbsp;Category</h1>
-        </div>
-        <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
-        <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose the Exhibition category of your desire! {' '}  </label> 
-        </div>
-      <div  style={{display: 'flex', justifyContent: 'center', marginBottom : '1%',border : '1px', borderColor : 'Red'}} >
-
-        
-        <IdcardOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</IdcardOutlined>  
-        <DesktopOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</DesktopOutlined>    
-        <CarOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(3)}><CarOutlined style={{color: "#364d79" }} />AUTOMOBILE</CarOutlined>    
-        <PlaySquareOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler(4)}><PlaySquareOutlined style={{color: "#364d79" }} />MEDIA</PlaySquareOutlined>     
-        <EllipsisOutlined type="primary" style = {icons} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</EllipsisOutlined>
-        
-        </div>
-        <div  style={{display: 'flex', justifyContent: 'center', marginTop : '1%'}} >
->>>>>>> 0eb33c438e9d002cc13251bb6daab1e903901b12
 
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#364d79" }} /> BUSINESS</Button>  
         <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#364d79" }} />IT</Button>    
