@@ -85,6 +85,16 @@ router.post("/products", (req, res) => {
   }
 });
 
+router.post("/getProducts",auth,(req,res)=> {
+
+  Product.find()
+  .exec((err,products) => {
+    if(err) return res.status(400).json({success : false,err})
+    res.status(200).json({success : true, products})
+  })
+
+});
+
 router.get("/products_by_id", (req, res) => {
   // get방식에서는 req.query를 사용한다.
   let type = req.query.type;
@@ -108,8 +118,11 @@ router.get("/products_by_id", (req, res) => {
       return res.status(200).send(product)
     })
 
-});
+    
+  
+      
 
+});
 
 
 module.exports = router;

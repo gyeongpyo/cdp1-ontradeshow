@@ -35,6 +35,7 @@ function SearchPage(props) {
 	const getEvents = (body) => {
 		axios.post('/api/product/products', body)
             .then(response => {
+				console.log(response.data.success)
                 if (response.data.success) {
 					if (body.loadMore) {
 						setEvents([...Events, ...response.data.info]);
