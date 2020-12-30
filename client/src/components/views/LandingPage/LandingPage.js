@@ -129,12 +129,12 @@
       }
 
       const renderCards = Events.map((event, index) => {
-        console.log('Event', event);
-        return <Col lg={6} md={8} xs={24} key={index}>
+        //console.log('Event', event);
+        return<Col lg = {1} key={index} style = {{width : '220px',padding : '15px',background : ' #364d79'}}>
             <Card
               cover={<a href={`/event/${event._id}`}>
-                <img style={{width: '100%', height: '100px', maxHeight: '30%'}} src={`http://localhost:5000/${event.images[0]}`}/>
-                </a>}
+                <img style={{position : 'inline', width: '100%', height: '100px', maxHeight: '30%'}} src={`http://localhost:5000/${event.images[0]}`}/>
+                </a>} 
               >
               <Meta 
                 title={event.title}
@@ -172,7 +172,7 @@
           <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
           <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관심지수가 가장 높은 인기 카테고리는 여기서 찾아보세요! {' '}  </label> 
           </div>
-          <div  style={{display: 'flex', justifyContent: 'center',}} >
+          <div  style={{display: 'flex', justifyContent: 'center', marginTop: "2%"}} >
 
           <IdcardOutlined type="primary" style = {IdcardOutlinedst} onClick={() => categoryButtonHandler(1)}><IdcardOutlined style={{color: "#123d79" }} /> BUSINESS</IdcardOutlined>  
           <DesktopOutlined type="primary" style = {DesktopOutlinedst} onClick={() => categoryButtonHandler(2)}><DesktopOutlined style={{color: "#123d79" }} />IT</DesktopOutlined>    
@@ -192,15 +192,47 @@
           <Button type="primary" style = {buttonSt} onClick={() => categoryButtonHandler()}><EllipsisOutlined style={{color: "#364d79" }} />OTHERS</Button>
 
           </div>
-
-          <div style ={{display: 'flex', justifyContent: 'center',marginTop: "4%"}}>
+          <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left', marginTop: "2%"}}>
+          <h1> &nbsp;&nbsp;&nbsp;&nbsp;최근 전시회</h1>
+          </div>
+          <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
+          <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전시회가 가장 최근에 개설! {' '}  </label> 
+          </div>
+          
+          <div style ={{display: 'flex', justifyContent: 'center',marginTop: "2%", textAlign : 'center'}}>
               {/* Card */}
-              <Row gutter={[8,8]}>
+              <Row>
                   {renderCards}
               </Row>
       </div>
 
+      <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left', marginTop: "2%"}}>
+          <h1> &nbsp;&nbsp;&nbsp;&nbsp;전시회 광고판</h1>
+          </div>
+          <div style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'left'}}>
+          <label style={{ color: "#8d8d8d"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전시회 광고를 보실수 있습니다 {' '}  </label> 
+          </div>
+      <Carousel autoplay>
+
+<div>
+<h3>{ <img style={{width: '80%', height: '50%',margin: "Auto",marginTop: "2%"}} src={banner_1}/> }</h3>
+</div>
+
+<div>
+<h3> { <img style={{width: '80%', height: '50%',margin: "Auto",marginTop: "2%"}} src={banner_2}/> }</h3>
+</div>
+
+<div>
+<h3> { <img style={{width: '80%', height: '50%',margin: "Auto",marginTop: "2%"}} src={banner_3}/> }</h3>
+</div>
+
+<div>
+<h3> { <img style={{width: '80%', height: '50%',margin: "Auto",marginTop: "2%"}} src={banner_4}/> }</h3>
+</div>
+
+</Carousel>
         </div>  
+        
   
       );    
   }

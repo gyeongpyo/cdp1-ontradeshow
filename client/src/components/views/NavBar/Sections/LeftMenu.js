@@ -12,10 +12,7 @@ function LeftMenu(props) {
     <Menu.Item key="search">
           <a href="/event/search">Search</a>
     </Menu.Item>
-    <Menu.Item key = "find">
-      <input type = 'text'></input>
-      <input type = 'button'></input>
-    </Menu.Item>
+   
   </Menu>
   )
 }
