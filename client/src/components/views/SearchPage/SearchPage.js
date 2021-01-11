@@ -7,7 +7,9 @@ import Checkbox from './Sections/CheckBox';
 import RadioBox from './Sections/RadioBox';
 import SearchFeature from './Sections/SearchFeature'
 import { price, categories } from './Sections/Datas';
-
+import { CloseOutlined } from '@ant-design/icons';
+//let skip = 8;
+//console.log("small skip : "+skip);
 
 
 function SearchPage(props) {
@@ -24,7 +26,8 @@ function SearchPage(props) {
 
 
     useEffect(() => {
-		let body = {
+
+		const body = {
 			skip: Skip,
 			limit: Limit
 		}
@@ -35,7 +38,7 @@ function SearchPage(props) {
 	const getEvents = (body) => {
 		axios.post('/api/product/products', body)
             .then(response => {
-				console.log(response.data.success)
+				//console.log(response.data.success)
                 if (response.data.success) {
 					if (body.loadMore) {
 						setEvents([...Events, ...response.data.info]);
@@ -50,11 +53,16 @@ function SearchPage(props) {
 	}
 
 	const loadMoreHandler = () => {
-		let skip = Skip + Limit;
-		let body = {
-			skip: Skip,
+		
+		let	skip = Skip+Limit;
+			//console.log("Ani sibal : "+skip);
+		
+		const body = {
+			skip: skip,
 			limit: Limit,
-			loadMore: true
+			loadMore: true,
+			filters : Filters,
+			//searchTerm: SearchTerms
 		}
 		getEvents(body);
 		setSkip(skip);

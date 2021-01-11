@@ -28,7 +28,7 @@
       const [Events, setEvents] = useState([]);
       const [PostSize, setPostSize] = useState();
       const [Skip, setSkip] = useState(0);
-      const [Limit, setLimit] = useState(8);
+      const [Limit, setLimit] = useState(6);
       const [Filters, setFilters] = useState({
         category: [],
         price: []
